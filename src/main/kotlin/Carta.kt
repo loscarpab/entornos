@@ -7,40 +7,34 @@ class Carta(Minumero: Int, mipalo: Char) {
             } else
                 field = value
         }
-        get() {
-            return field
-        }
+
     var palo=mipalo
         set(value) {
             //'C','P', 'R', 'T'
-            val l = listOf<Char>('C', 'B', 'O', 'E')
+            val l = listOf('C', 'B', 'O', 'E')
             if (value !in l) {
                 println("Palo de carta inválido.")
             } else
                 field = value
         }
-        get() {
-            return field
-        }
-    constructor():this((1..10).random(),paloAleatorio()){
-    }
-    constructor(otraCarta: Carta) : this(otraCarta.numero, otraCarta.palo) {
-    }
+
+    constructor():this((1..10).random(),paloAleatorio())
+    constructor(otraCarta: Carta) : this(otraCarta.numero, otraCarta.palo)
 
     fun mostrarCarta() {
         var paloMostrar = ""
         var numeroMostrar = ""
-        when {
-            palo == 'C' -> paloMostrar = "Corazones"
-            palo == 'B' -> paloMostrar = "Bastos"
-            palo == 'O' -> paloMostrar = "Oros"
-            palo == 'E' -> paloMostrar = "Espadas"
+        when (palo) {
+            'C' -> paloMostrar = "Corazones"
+            'B' -> paloMostrar = "Bastos"
+            'O' -> paloMostrar = "Oros"
+            'E' -> paloMostrar = "Espadas"
         }
-        when {
-            numero == 8 -> numeroMostrar = "Sota"
-            numero in (1..7) -> numeroMostrar = numero.toString()
-            numero == 9 -> numeroMostrar = "Caballo"
-            numero == 10 -> numeroMostrar = "Rey"
+        when (numero) {
+            8 -> numeroMostrar = "Sota"
+            in (1..7) -> numeroMostrar = numero.toString()
+            9 -> numeroMostrar = "Caballo"
+            10 -> numeroMostrar = "Rey"
         }
         println("$numeroMostrar de $paloMostrar.")
     }
@@ -84,11 +78,11 @@ class Carta(Minumero: Int, mipalo: Char) {
 
 }
 fun paloAleatorio():Char{
-    val l = listOf<Char>('C', 'B', 'O', 'E')
+    val l = listOf('C', 'B', 'O', 'E')
     return(l.get((0..3).random()) )
 }
 fun numeroAPalo(n:Int):Char{
-    val l = listOf<Char>('C', 'B', 'O', 'E')
+    val l = listOf('C', 'B', 'O', 'E')
     if (n>=0 && n<=3)
      return(l.get(n) )
     else return l.get(0)

@@ -1,10 +1,8 @@
-class Mano (tamañoinicial:Int){
+class Mano (tamanoinicial:Int){
 
-    private var tamaño=1
-        get(){
-            return field
-        }
-        set(valor:Int){
+    private var tamano=1
+
+        set(valor){
             if (valor<0)
                 field=1
             else
@@ -13,12 +11,12 @@ class Mano (tamañoinicial:Int){
 
     private var listaCartas= mutableListOf<Carta>()
     init{
-        if (tamañoinicial<0)
-            tamaño=1
+        if (tamanoinicial<0)
+            tamano=1
         else
-            tamaño=tamañoinicial
+            tamano=tamanoinicial
 
-        for (i in (0..tamaño-1))
+        for (i in (0..tamano-1))
             listaCartas.add(Carta())
     }
 
@@ -28,21 +26,21 @@ class Mano (tamañoinicial:Int){
         listaCartas.add(Carta())
         listaCartas.add(Carta())
         */
-        for (i in (0..tamaño-1))
+        for (i in (0..tamano-1))
             listaCartas.add(Carta())
     }
-    fun obtenerTamaño():Int{
-        return tamaño
+    fun obtenerTamano():Int{
+        return tamano
     }
-    fun mostrarCarta(posición : Int){
-        if(posición>=0 && posición<listaCartas.size){
-            println(listaCartas[posición].toString())
+    fun mostrarCarta(posicion : Int){
+        if(posicion>=0 && posicion<listaCartas.size){
+            println(listaCartas[posicion].toString())
         }
 
     }
-    fun obtenerCarta(posición : Int):Carta {
-        if (posición >= 0 && posición < listaCartas.size) {
-            return listaCartas[posición]
+    fun obtenerCarta(posicion : Int):Carta {
+        if (posicion >= 0 && posicion < listaCartas.size) {
+            return listaCartas[posicion]
         } else
             return Carta()
     }
@@ -51,17 +49,17 @@ class Mano (tamañoinicial:Int){
         for (i in (0.. listaCartas.size-1))
             mostrarCarta(i)
     }
-    fun actualizarCarta(posición : Int, nuevaCarta : Carta){
-        if (posición >= 0 && posición < listaCartas.size) {
+    fun actualizarCarta(posicion : Int, nuevaCarta : Carta){
+        if (posicion >= 0 && posicion < listaCartas.size) {
            //listaCartas[posición]=nuevaCarta
-            listaCartas[posición]=Carta(nuevaCarta)
+            listaCartas[posicion]=Carta(nuevaCarta)
         }
 
 
     }
     fun manoGanadora(otraMano: Mano):Int{
         var acumulaVictorias=0
-        var menorNumeroCartas=if (listaCartas.size<otraMano.listaCartas.size) listaCartas.size else otraMano.listaCartas.size
+        val menorNumeroCartas=if (listaCartas.size<otraMano.listaCartas.size) listaCartas.size else otraMano.listaCartas.size
         for (i in (0.. menorNumeroCartas-1)){
             acumulaVictorias+=listaCartas[i].compararCarta(otraMano.listaCartas[i])
         }
@@ -82,12 +80,12 @@ class Mano (tamañoinicial:Int){
         }
 
     }
-    fun pedirCartayAñadir(){
-        var nuevaCarta=Carta()
+    fun pedirCartayAnadir(){
+        val nuevaCarta=Carta()
         nuevaCarta.pedirCarta()
         listaCartas.add(nuevaCarta)
         //tamaño++
-        tamaño=listaCartas.size
+        tamano=listaCartas.size
 
     }
 }
