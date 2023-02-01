@@ -1,7 +1,7 @@
 class Carta(Minumero: Int, mipalo: Char) {
     var numero=Minumero
         set(value) {
-            if (value !in 1..13) {
+            if (value !in 1..10) {
                 println("Numero de carta inválido.")
             } else
                 field = value
@@ -12,7 +12,7 @@ class Carta(Minumero: Int, mipalo: Char) {
     var palo=mipalo
         set(value) {
             //'C','P', 'R', 'T'
-            val l = listOf<Char>('C', 'P', 'R', 'T')
+            val l = listOf<Char>('C', 'B', 'O', 'E')
             if (value !in l) {
                 println("Palo de carta inválido.")
             } else
@@ -27,7 +27,7 @@ class Carta(Minumero: Int, mipalo: Char) {
         this.palo = palo
     }
 */
-    constructor():this((1..13).random(),paloAleatorio()){
+    constructor():this((1..10).random(),paloAleatorio()){
     /*
      numero=(1..13).random()
      palo=paloAleatorio()
@@ -42,16 +42,15 @@ class Carta(Minumero: Int, mipalo: Char) {
         var numeroMostrar = ""
         when {
             palo == 'C' -> paloMostrar = "Corazones"
-            palo == 'P' -> paloMostrar = "Picas"
-            palo == 'R' -> paloMostrar = "Rombos"
-            palo == 'T' -> paloMostrar = "Trebol"
+            palo == 'B' -> paloMostrar = "Bastos"
+            palo == 'O' -> paloMostrar = "Oros"
+            palo == 'E' -> paloMostrar = "Espadas"
         }
         when {
-            numero == 1 -> numeroMostrar = "As"
-            numero in (2..10) -> numeroMostrar = numero.toString()
-            numero == 11 -> numeroMostrar = "Jack"
-            numero == 12 -> numeroMostrar = "Reina"
-            numero == 13 -> numeroMostrar = "Rey"
+            numero == 8 -> numeroMostrar = "Sota"
+            numero in (1..7) -> numeroMostrar = numero.toString()
+            numero == 9 -> numeroMostrar = "Caballo"
+            numero == 10 -> numeroMostrar = "Rey"
         }
         println("$numeroMostrar de $paloMostrar.")
     }
@@ -85,9 +84,9 @@ class Carta(Minumero: Int, mipalo: Char) {
         return "Carta(numero=$numero, palo=$palo)"
     }
     fun pedirCarta(){
-        println("introduce un número del 1 al 13")
+        println("introduce un número del 1 al 10")
         numero= readln().toInt()
-        println("introduce un palo entra ('C', 'P', 'R', 'T')")
+        println("introduce un palo entra ('C', 'B', 'O', 'E')")
         palo= readln()[0]
 
 
@@ -95,11 +94,11 @@ class Carta(Minumero: Int, mipalo: Char) {
 
 }
 fun paloAleatorio():Char{
-    val l = listOf<Char>('C', 'P', 'R', 'T')
+    val l = listOf<Char>('C', 'B', 'O', 'E'))
     return(l.get((0..3).random()) )
 }
 fun numeroAPalo(n:Int):Char{
-    val l = listOf<Char>('C', 'P', 'R', 'T')
+    val l = listOf<Char>('C', 'B', 'O', 'E'))
     if (n>=0 && n<=3)
      return(l.get(n) )
     else return l.get(0)
@@ -120,7 +119,7 @@ fun main(args: Array<String>) {
     carta1.compararCarta(carta2)
     */
     var listaCartas= mutableListOf<Carta>()
-    for (n in (1..13))
+    for (n in (1..10))
         for (p in (0..3)){
             /*
             val c=Carta(n,numeroAPalo(p))
