@@ -23,6 +23,9 @@
   <component name="MacroExpansionManager">
     <option name="directoryName" value="wgsl90ol" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="2" />
   </component>
